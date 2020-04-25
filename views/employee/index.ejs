@@ -1,0 +1,188 @@
+<script>
+
+var bill =0;
+var singleOrder="";
+
+function takeprice() {
+
+var foodRate =  document.getElementById("item").value;
+var rate =  parseInt(foodRate);
+document.getElementById("price").value = rate;
+document.getElementById("quantity").value = "";
+}
+
+
+function addItem() {
+
+var item = document.getElementById("item").selectedIndex;
+var name = document.getElementById("item").value;
+
+var quantity = document.getElementById("quantity").value;
+var price = document.getElementById("price").value;
+
+var multi = (quantity*price);
+
+bill = bill + multi; 
+
+document.getElementById("bill").value = bill;
+
+singleOrder = singleOrder + ("["+name+" QUANTITY-"+quantity+" SINGLEPRICE"+price+" PRICEOFQUANTITY"+multi+"]");
+document.getElementById("fullOrder").value = singleOrder;
+}
+
+
+</script>
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>METRO RESTAURANT</title>
+</head>
+<body>
+	
+<center>
+<h1>Welcome EMPLOYEE</h1>	
+	
+
+	<a href="/logout"><font size="4">LOGOUT</font></a>
+
+	<br>
+	<br>
+	<a href="/employee/showorders"><font size="4">SHOW ORDERS</font></a>
+	<br>	
+</center>
+
+<table>
+	
+<tr>
+
+	<td>	
+	<center>
+	
+	<fieldset style="width: 600px">
+    <legend><h2>ORDER SERVICE</h2></legend>
+		
+
+		<table >
+			<tr>
+				<td>SELECT ITEM</td>
+				<td>
+					<select id="item" name="item" onchange="takeprice()">
+
+					<% for(var i = 0; i < itemList.length; i++){ %>
+					  
+					<option value = "<%=itemList[i].price%> <%=itemList[i].itemname%>" ><%=itemList[i].itemname%>-<%=itemList[i].price%></option>
+				
+				<% } %>
+					</select>
+				</td>
+
+
+				<td>PRICE</td>
+				<td><input type="text" id = "price" name="price" value="" readonly autocomplete="OFF">Tk
+				
+				</td>
+			</tr>
+			<tr>
+				<td>Quantity</td>
+				<td><input type="text" id="quantity" name="quantity">
+				
+				</td>
+
+			</tr>
+			<tr>
+				<td>
+					<input type="submit" value = "ADD" align="right" onclick="addItem()">
+				</td>
+				
+			</tr>
+
+		</table>
+
+<form method="post" border ="3">
+			<fieldset style="width: 400px">
+			<legend>
+				<h2>ORDER DETAILS</h2>
+
+			</legend>
+
+					<table>
+						<tr>
+							<td><b>ORDER ID:<label value="500"></label></b></td>
+							<td></td>
+						</tr>
+
+						<tr>
+							<td> <textarea  rows="15" cols="55" id = "fullOrder" name="fullOrder"></textarea></td>
+						</tr>
+
+
+						<tr>
+							<td>Bill: <input id="bill" type="text" name="bill" readonly>  </td>
+						</tr>
+
+						<tr>
+							<td> <br> </td>
+						</tr>
+
+						<tr>
+							<td><input type="submit" value = "ORDER" align="right"></td>
+						</tr>
+
+					</table>
+
+		<table>
+			<tr>
+				<td>
+				<ul>
+					<% for(var i = 0; i < errs.length; i++){ %>
+						<li><%= errs[i].message %></li>
+					<% } %>
+				</ul>
+				</td>
+			</tr>
+		</table>
+				
+			
+			</fieldset>
+		</form>
+
+			</fieldset>
+
+		</center>
+
+
+	</td>
+
+
+	<td>
+
+		<table border="3" height= "200px" width="550px">
+		<tr>
+			<th>Serial</th>
+			<th>ITEM NAME</th>
+			<th>Price</th>
+		</tr>
+		
+
+		<% for(var i = 0; i < itemList.length; i++){ %>
+		<tr>
+			<td><center> <%=i%> </center></td>
+			<td><center> <%= itemList[i].itemname %> </center></td>
+			<td><center> <%= itemList[i].price %>TK</center></td>
+		</tr>
+		<% } %>
+
+	</table>
+	
+	</td>
+
+	</tr>
+
+</table>
+</body>
+</html>
+
+

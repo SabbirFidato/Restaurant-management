@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>METRO RESTAURANT</title>
+</head>
+<body>
+
+<b>
+	<center>
+
+	<br>
+
+	<h1>Welcome Employee</h1>
+
+
+	<br>
+
+	<a href="/logout"><font size="5">LOGOUT</font></a>
+	
+	<br>
+	<br>
+	<br>
+	<br>
+	<a href="/admin/create"><font size="6">ADD NEW FOOD ITEM</font></a>  
+
+	<br>
+	<br>
+	<br>
+	<table border="3" height= "200px" width="550px" >
+		<tr>
+			<th>ID</th>
+			<th>ITEM NAME</th>
+			<th>Price</th>
+			<th>OPTION</th>
+		</tr>
+		
+
+		<% for(var i = 0; i < itemList.length; i++){ %>
+		<tr>
+			<td><center> <%= itemList[i].itemid %> </center></td>
+			<td><center> <%= itemList[i].itemname %> </center></td>
+			<td><center> <%= itemList[i].price %>Tk</center></td>
+			<td><center>
+				<a href="/admin/update/ <%= itemList[i].itemid %> " >UPDATE ITEM</a> |
+				<a href="/admin/delete/ <%= itemList[i].itemid %>" >DELETE</a>
+
+				
+			</center></td>
+		</tr>
+		<% } %>
+
+	</table>
+
+	</center>
+</body>
+</html>
+

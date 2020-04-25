@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>METRO RESTAURANT</title>
+</head>
+<body>
+
+<b>
+	<center>
+
+	<br>
+
+	<h1>ALL ORDERS</h1>
+
+
+	<br>
+
+	<a href="/employee"><font size="5">BACK</font></a>
+	
+
+
+	<br>
+	<br>
+	<br>
+	<table border="4" height= "200px" width="550px" >
+		<tr>
+			<th>ID</th>
+			<th>ORDER DETAILS</th>
+			<th>BILL</th>
+		</tr>
+		
+
+		<% for(var i = 0; i < orderDetails.length; i++){ %>
+		<tr>
+			<td><center> <%= orderDetails[i].orderid %> </center></td>
+			<td><center> <%= orderDetails[i].orderdetails %> </center></td>
+			<td><center> <%= orderDetails[i].bill %>Tk </center></td>
+		</tr>
+		<% } %>
+
+	</table>
+
+
+	</center>
+</body>
+</html>
+
